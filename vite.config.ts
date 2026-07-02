@@ -3,6 +3,10 @@ import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
+  // On GitHub Pages a project site is served from /<repo>/, so assets need
+  // that prefix. The deploy workflow sets VITE_BASE to "/<repo>/"; locally it
+  // falls back to "/".
+  base: process.env.VITE_BASE ?? "/",
   plugins: [react()],
   worker: {
     format: "es",
